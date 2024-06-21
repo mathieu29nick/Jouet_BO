@@ -1,0 +1,77 @@
+﻿@page
+@model Back_Gestion.Pages.User.IndexModel
+
+@{
+    ViewData["Title"] = "Liste Utilisateurs";
+    var prevDisabled = !Model.Utilisateur.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Utilisateur.HasNextPage ? "disabled" : "";
+    
+}
+
+<h3>Liste Utilisateurs</h3>
+
+<p>
+    <a asp-page="Create">Ajouter un nouveau utilisateur</a>
+</p>
+
+@if (Model.Utilisateur.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Utilisateur[0].pseudo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Utilisateur[0].mdp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Utilisateur[0].role)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Utilisateur[0].Jeton)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Utilisateur)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pseudo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mdp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.role)
+                    </td>
+                    <td>
+                        @(item.Jeton != null && item.Jeton.nombreJeton != null ? item.Jeton.nombreJeton.ToString() : "0")
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-page="./Index"
+       asp-route-pageIndex="@(Model.Utilisateur.PageIndex - 1)"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="./Index"
+       asp-route-pageIndex="@(Model.Utilisateur.PageIndex + 1)"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>
+    }
+else
+{
+    <p>Pas de résultats trouvés</p>
+}

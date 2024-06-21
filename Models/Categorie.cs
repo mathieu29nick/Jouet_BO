@@ -4,5 +4,7 @@
     {
         public int id {  get; set; }
         public string libelle {  get; set; }
+
+        public ICollection<Produit>? produit { get; set; }
     }
 }

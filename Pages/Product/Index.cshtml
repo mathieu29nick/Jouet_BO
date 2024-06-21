@@ -1,0 +1,84 @@
+﻿@page
+@model Back_Gestion.Pages.Product.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    var prevDisabled = !Model.Produit.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Produit.HasNextPage ? "disabled" : "";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Produit[0].libelle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produit[0].description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produit[0].prixjeton)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produit[0].datepublication)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produit[0].stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produit[0].image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produit[0].categorie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Produit) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prixjeton)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datepublication)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock)
+            </td>
+            <td>
+                    <img src="~/img/@item.image" alt="@item.libelle" style="width:90px;height:90px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categorie.libelle)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-page="./Index"
+   asp-route-pageIndex="@(Model.Produit.PageIndex - 1)"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-pageIndex="@(Model.Produit.PageIndex + 1)"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

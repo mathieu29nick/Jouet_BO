@@ -1,0 +1,92 @@
+﻿@page
+@model Back_Gestion.Pages.Product.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Produit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Produit.id" />
+            <div class="form-group">
+                <label asp-for="Produit.libelle" class="control-label"></label>
+                <input asp-for="Produit.libelle" class="form-control" />
+                <span asp-validation-for="Produit.libelle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produit.description" class="control-label"></label>
+                <input asp-for="Produit.description" class="form-control" />
+                <span asp-validation-for="Produit.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produit.prixjeton" class="control-label"></label>
+                <input asp-for="Produit.prixjeton" class="form-control" />
+                <span asp-validation-for="Produit.prixjeton" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produit.datepublication" class="control-label"></label>
+                <input asp-for="Produit.datepublication" class="form-control" />
+                <span asp-validation-for="Produit.datepublication" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produit.idCategorie" class="control-label"></label>
+                <select asp-for="Produit.idCategorie" class="form-control" asp-items="@Model.Categories"></select>
+                <span asp-validation-for="Produit.idCategorie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Produit.stock" class="control-label"></label>
+                <input asp-for="Produit.stock" class="form-control" />
+                <span asp-validation-for="Produit.stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Produit.image" class="form-control" type="hidden" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Produit.image" class="control-label"></label>
+                <input type="file" id="imageUpload" name="Produit.ImageUpload" class="form-control" onchange="previewImage(this)" />
+                <span asp-validation-for="Produit.image" class="text-danger"></span>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Produit.image))
+            {
+                <div>
+                    <img id="productImage" src="~/img/@Model.Produit.image" alt="@Model.Produit.libelle" style="max-width: 200px; max-height: 200px;" />
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script>
+            function previewImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#productImage').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+    }
+}
+

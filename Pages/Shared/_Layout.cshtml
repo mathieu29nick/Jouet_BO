@@ -213,3 +213,17 @@
 </body>
 
 </html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var token = '@TempData["Token"]';
+        if (token) {
+            localStorage.setItem("authToken", token);
+        }
+
+        // Rediriger vers la page de connexion si le token est absent
+        if (!localStorage.getItem("authToken") && window.location.pathname !== "/Login") {
+            window.location.href = "/Login";
+        }
+    });
+</script>

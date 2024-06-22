@@ -8,70 +8,79 @@
     
 }
 
-<h3>Liste Utilisateurs</h3>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Liste des Utilisateurs</h4>
+        <br />
+        <p>
+            <a asp-page="Create">Ajouter un nouveau Utilisateur</a>
+        </p>
+    </div>
+    <div class="card-body">
+        @if (Model.Utilisateur.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Utilisateur[0].pseudo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Utilisateur[0].mdp)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Utilisateur[0].role)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Utilisateur[0].Jeton)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Utilisateur)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.pseudo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.mdp)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.role)
+                            </td>
+                            <td>
+                                @(item.Jeton != null && item.Jeton.nombreJeton != null ? item.Jeton.nombreJeton.ToString() : "0")
+                            </td>
+                            <td style="text-align:center">
+                                <a asp-page="./Edit" asp-route-id="@item.id" class="btn btn-info btn-icon-split">
+                                    <span class="text">Modifier</span>
+                                </a>
+                                <a asp-page="./Details" asp-route-id="@item.id" class="btn btn-warning btn-icon-split">
+                                    <span class="text">Détail</span>
+                                </a>
+                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
 
-<p>
-    <a asp-page="Create">Ajouter un nouveau utilisateur</a>
-</p>
-
-@if (Model.Utilisateur.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Utilisateur[0].pseudo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Utilisateur[0].mdp)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Utilisateur[0].role)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Utilisateur[0].Jeton)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Utilisateur)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.pseudo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.mdp)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.role)
-                    </td>
-                    <td>
-                        @(item.Jeton != null && item.Jeton.nombreJeton != null ? item.Jeton.nombreJeton.ToString() : "0")
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    <a asp-page="./Index"
-       asp-route-pageIndex="@(Model.Utilisateur.PageIndex - 1)"
-       class="btn btn-primary @prevDisabled">
-        Previous
-    </a>
-    <a asp-page="./Index"
-       asp-route-pageIndex="@(Model.Utilisateur.PageIndex + 1)"
-       class="btn btn-primary @nextDisabled">
-        Next
-    </a>
-    }
-else
-{
-    <p>Pas de résultats trouvés</p>
-}
+            <a asp-page="./Index"
+               asp-route-pageIndex="@(Model.Utilisateur.PageIndex - 1)"
+               class="btn btn-primary @prevDisabled">
+                Précedent
+            </a>
+            <a asp-page="./Index"
+               asp-route-pageIndex="@(Model.Utilisateur.PageIndex + 1)"
+               class="btn btn-primary @nextDisabled">
+                Suivant
+            </a>
+        }
+        else
+        {
+            <p>Pas de résultats trouvés</p>
+        }
+    </div>
+</div>

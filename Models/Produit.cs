@@ -18,16 +18,19 @@ namespace Back_Gestion.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date de Publication")]
-        public DateTime datepublication { get; set; }
+        public DateTime? datepublication { get; set; }
         [Required(ErrorMessage = "Le champ Categorie est requis.")]
         [Display(Name = "Categorie")]
         public int idCategorie { get; set; }
         [Required(ErrorMessage = "Le champ Stock est requis.")]
         [Display(Name = "Quantité/Stock")]
         public int stock {  get; set; }
+        [Display(Name = "Photos")]
         public string? image {  get; set; }
         public Categorie? categorie { get; set; }
         [NotMapped]
+        [Display(Name = "Photos")]
         public IFormFile? ImageUpload { get; set; }
+        public ICollection<Achat>? Achat { get; set;}
     }
 }

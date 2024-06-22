@@ -22,6 +22,41 @@ namespace Back_Gestion.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Back_Gestion.Models.Achat", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("dateAchat")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("idProduit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idUtilisateur")
+                        .HasColumnType("int");
+
+                    b.Property<double>("mttAR")
+                        .HasColumnType("float");
+
+                    b.Property<double>("mttJeton")
+                        .HasColumnType("float");
+
+                    b.Property<int>("qte")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("idProduit");
+
+                    b.HasIndex("idUtilisateur");
+
+                    b.ToTable("Achat");
+                });
+
             modelBuilder.Entity("Back_Gestion.Models.Categorie", b =>
                 {
                     b.Property<int>("id")
@@ -69,7 +104,7 @@ namespace Back_Gestion.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<DateTime>("datepublication")
+                    b.Property<DateTime?>("datepublication")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("description")
@@ -80,7 +115,6 @@ namespace Back_Gestion.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("libelle")
@@ -125,6 +159,25 @@ namespace Back_Gestion.Migrations
                     b.ToTable("Utilisateur");
                 });
 
+            modelBuilder.Entity("Back_Gestion.Models.Achat", b =>
+                {
+                    b.HasOne("Back_Gestion.Models.Produit", "produit")
+                        .WithMany("Achat")
+                        .HasForeignKey("idProduit")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Back_Gestion.Models.Utilisateur", "utilisateur")
+                        .WithMany("Achat")
+                        .HasForeignKey("idUtilisateur")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("produit");
+
+                    b.Navigation("utilisateur");
+                });
+
             modelBuilder.Entity("Back_Gestion.Models.Jeton", b =>
                 {
                     b.HasOne("Back_Gestion.Models.Utilisateur", "Utilisateur")
@@ -152,8 +205,15 @@ namespace Back_Gestion.Migrations
                     b.Navigation("produit");
                 });
 
+            modelBuilder.Entity("Back_Gestion.Models.Produit", b =>
+                {
+                    b.Navigation("Achat");
+                });
+
             modelBuilder.Entity("Back_Gestion.Models.Utilisateur", b =>
                 {
+                    b.Navigation("Achat");
+
                     b.Navigation("Jeton");
                 });
 #pragma warning restore 612, 618

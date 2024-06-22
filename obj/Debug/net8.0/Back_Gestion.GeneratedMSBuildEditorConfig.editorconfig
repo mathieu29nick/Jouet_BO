@@ -26,6 +26,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\M2\Mr Naina\GestionJouet\BO\Back_Gestion
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Achats/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNoYXRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Achats/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNoYXRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Achats/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNoYXRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Achats/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNoYXRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Achats/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNoYXRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,6 +92,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Product/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Product/ImportCSV.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFxJbXBvcnRDU1YuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/M2/Mr Naina/GestionJouet/BO/Back_Gestion/Pages/Product/Index.cshtml]

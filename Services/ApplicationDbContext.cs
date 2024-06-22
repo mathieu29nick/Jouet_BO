@@ -13,11 +13,12 @@ namespace Back_Gestion.Services
         public DbSet<Jeton> Jeton { get; set; }
         public DbSet<Categorie> Categorie { get; set; }
         public DbSet<Produit> Produit { get; set; }
+        public DbSet<Achat> Achat { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Jeton>()
-            .HasKey(j => j.id);
+                .HasKey(j => j.id);
 
             modelBuilder.Entity<Jeton>()
                 .HasOne(j => j.Utilisateur)
@@ -35,6 +36,21 @@ namespace Back_Gestion.Services
                 .WithMany(c => c.produit)
                 .HasForeignKey(p => p.idCategorie)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Achat>()
+                .HasKey(a => a.id);
+
+            modelBuilder.Entity<Achat>()
+                .HasOne(a => a.utilisateur)
+                .WithMany(u => u.Achat)
+                .HasForeignKey(a => a.idUtilisateur)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Achat>()
+                .HasOne(a => a.produit)
+                .WithMany(p => p.Achat)
+                .HasForeignKey(a => a.idProduit)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

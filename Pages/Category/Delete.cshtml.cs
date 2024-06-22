@@ -49,9 +49,14 @@ namespace Back_Gestion.Pages.Category
                 return NotFound();
             }
 
-            var categorie = await _context.Categorie.FindAsync(id);
+            var categorie = await _context.Categorie.Include(p=>p.produit).FirstOrDefaultAsync(c => c.id == id);
             if (categorie != null)
             {
+                if (categorie.produit != null)
+                {
+                    _context.Produit.RemoveRange(categorie.produit);
+                }
+
                 Categorie = categorie;
                 _context.Categorie.Remove(Categorie);
                 await _context.SaveChangesAsync();

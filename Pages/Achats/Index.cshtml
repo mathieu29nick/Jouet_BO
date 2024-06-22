@@ -1,0 +1,98 @@
+﻿@page
+@model Back_Gestion.Pages.Achats.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    var prevDisabled = !Model.Achat.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Achat.HasNextPage ? "disabled" : "";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Liste des Achats effectués</h4>
+        <hr />
+        <p>
+            <a asp-page="Create">Ajouter un Achat d'un Utilisateur</a>
+        </p>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Achat[0].produit)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Achat[0].qte)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Achat[0].mttAR)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Achat[0].mttJeton)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Achat[0].dateAchat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Achat[0].produit.image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Achat[0].utilisateur)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Achat)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.produit.libelle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.qte)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.mttAR)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.mttJeton)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dateAchat)
+                        </td>
+                        <td>
+                            <img src="~/img/@item.produit.image" alt="@item.produit.libelle" style="width:90px;height:90px;" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.utilisateur.pseudo)
+                        </td>
+                        <td style="text-align:center">
+                            <a asp-page="./Edit" asp-route-id="@item.id" class="btn btn-info btn-icon-split">
+                                <span class="text">Modifier</span>
+                            </a>
+                            <a asp-page="./Details" asp-route-id="@item.id" class="btn btn-warning btn-icon-split">
+                                <span class="text">Détail</span>
+                            </a>
+                            <a asp-page="./Delete" asp-route-id="@item.id" class="btn btn-danger btn-icon-split">
+                                <span class="text">Supprimer</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-page="./Index"
+           asp-route-pageIndex="@(Model.Achat.PageIndex - 1)"
+           class="btn btn-primary @prevDisabled">
+            Previous
+        </a>
+        <a asp-page="./Index"
+           asp-route-pageIndex="@(Model.Achat.PageIndex + 1)"
+           class="btn btn-primary @nextDisabled">
+            Next
+        </a>
+
+    </div>
+</div>

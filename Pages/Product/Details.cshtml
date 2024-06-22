@@ -5,57 +5,79 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="card shadow mb-4">
+  
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/img/@Model.Produit.image" alt="@Model.Produit.libelle" style="width: 700px; height: 600px;" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary" style="text-align:center">Fiche d'un Produit</h5>
+                </div>
+                <div class="card-body">
+                    <p>
+                        <div class="text font-weight-bold text-info text-uppercase mb-1">
+                            Libelle :
+                        </div>
+                        @Html.DisplayFor(model => model.Produit.libelle)
+                    </p>
+                    <p>
+                        <div class="text font-weight-bold text-info text-uppercase mb-1">
+                            Description :
+                        </div>
+                        @Html.DisplayFor(model => model.Produit.description)
+                    </p>
+                    <p>
+                        <div class="text font-weight-bold text-info text-uppercase mb-1">
+                            Categorie :
+                        </div>
+                        @Html.DisplayFor(model => model.Produit.categorie.libelle)
+                    </p>
+                    <p>
+                        <div class="text font-weight-bold text-info text-uppercase mb-1">
+                            Prix en Jeton :
+                        </div>
+                        @Html.DisplayFor(model => model.Produit.prixjeton)
+                    </p>
+                    <p>
+                        <div class="text font-weight-bold text-info text-uppercase mb-1">
+                            Stock Restant :
+                        </div>
+                        @Html.DisplayFor(model => model.Produit.stock)
+                    </p>
+                    <p>
+                        <div class="text font-weight-bold text-info text-uppercase mb-1">
+                            Date de Publication :
+                        </div>
+                        @Html.DisplayFor(model => model.Produit.datepublication)
+                    </p>
+                    <br />
+                    <p>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <a asp-page="./Index" class="btn btn-light btn-icon-split">
+                                    <span class="icon text-gray-600">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </span>
+                                    <span class="text">Retour</span>
+                                </a>
+                            </div>
+                            <div class="col-md-2">
+                                <a asp-page="./Edit" asp-route-id="@Model.Produit.id" class="btn btn-warning btn-icon-split">
+                                    <span class="icon text-gray-600">
+                                        <i class="fas fa-edit"></i>
+                                    </span>
+                                    <span class="text">Modifier</span>
+                                </a>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div>
-    <h4>Produit</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Produit.libelle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Produit.libelle)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Produit.description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Produit.description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Produit.prixjeton)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Produit.prixjeton)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Produit.datepublication)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Produit.datepublication)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Produit.stock)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Produit.stock)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Produit.image)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/img/@Model.Produit.image" alt="@Model.Produit.libelle" style="max-width: 200px; max-height: 200px;" />
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Produit.categorie)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Produit.categorie.libelle)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Produit.id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+

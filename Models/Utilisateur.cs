@@ -21,5 +21,6 @@ namespace Back_Gestion.Models
         public string role { get; set; }
        
         public Jeton? Jeton { get; set; }
+        public ICollection<Achat>? Achat { get; set; }
     }
 }

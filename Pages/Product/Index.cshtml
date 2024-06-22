@@ -6,79 +6,61 @@
     var prevDisabled = !Model.Produit.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.Produit.HasNextPage ? "disabled" : "";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Produit[0].libelle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Produit[0].description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Produit[0].prixjeton)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Produit[0].datepublication)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Produit[0].stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Produit[0].image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Produit[0].categorie)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Produit) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.libelle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.prixjeton)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.datepublication)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.stock)
-            </td>
-            <td>
-                    <img src="~/img/@item.image" alt="@item.libelle" style="width:90px;height:90px;" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.categorie.libelle)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<a asp-page="./Index"
-   asp-route-pageIndex="@(Model.Produit.PageIndex - 1)"
-   class="btn btn-primary @prevDisabled">
-    Previous
-</a>
-<a asp-page="./Index"
-   asp-route-pageIndex="@(Model.Produit.PageIndex + 1)"
-   class="btn btn-primary @nextDisabled">
-    Next
-</a>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 class="m-0 font-weight-bold text-primary">Liste des Produits</h4>
+        <br />
+        <p>
+            <a asp-page="Create">Ajouter un Produit</a> |
+            <a asp-page="ImportCSV">Importer un fichier</a>
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Produit[0].libelle)</th>
+                        <th>@Html.DisplayNameFor(model => model.Produit[0].description)</th>
+                        <th style="text-align:center"> @Html.DisplayNameFor(model => model.Produit[0].prixjeton)</th>
+                        <th style="text-align:center">@Html.DisplayNameFor(model => model.Produit[0].image)</th>
+                        <th style="text-align:center"> @Html.DisplayNameFor(model => model.Produit[0].datepublication)</th>
+                        <th style="text-align:center">-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Produit) {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.libelle)</td>
+                        <td>@Html.DisplayFor(modelItem => item.description)</td>
+                        <td style ="text-align:center"> @Html.DisplayFor(modelItem => item.prixjeton)</td>
+                        <td style="text-align:center"><img src="~/img/@item.image" alt="@item.libelle" style="width:90px;height:90px;" /></td>
+                        <td style="text-align:center">@Html.DisplayFor(modelItem => item.datepublication)</td>
+                            <td style="text-align:center">
+                                <a asp-page="./Edit" asp-route-id="@item.id" class="btn btn-info btn-icon-split">
+                                    <span class="text">Modifier</span>
+                                </a>
+                                <a asp-page="./Details" asp-route-id="@item.id" class="btn btn-warning btn-icon-split">
+                                    <span class="text">Détail</span>
+                                </a>
+                                <a asp-page="./Delete" asp-route-id="@item.id" class="btn btn-danger btn-icon-split">
+                                    <span class="text">Supprimer</span>
+                                </a>
+                            </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <a asp-page="./Index"
+               asp-route-pageIndex="@(Model.Produit.PageIndex - 1)"
+               class="btn btn-primary @prevDisabled">
+                Précedent
+            </a>
+            <a asp-page="./Index"
+               asp-route-pageIndex="@(Model.Produit.PageIndex + 1)"
+               class="btn btn-primary @nextDisabled">
+                Suivant
+            </a>
+        </div>
+    </div>
+</div>

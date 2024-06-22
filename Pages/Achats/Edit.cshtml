@@ -1,0 +1,55 @@
+﻿@page
+@model Back_Gestion.Pages.Achats.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 style="text-align:center" class="m-0 font-weight-bold text-primary">Modifier un Achat</h4>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Achat.id" />
+            <div class="form-group">
+                <label asp-for="Achat.idUtilisateur" class="control-label"></label>
+                <select asp-for="Achat.idUtilisateur" class="form-control" asp-items="ViewBag.idUtilisateur"></select>
+                <span asp-validation-for="Achat.idUtilisateur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achat.idProduit" class="control-label"></label>
+                <select asp-for="Achat.idProduit" class="form-control" asp-items="ViewBag.idProduit"></select>
+                <span asp-validation-for="Achat.idProduit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achat.qte" class="control-label"></label>
+                <input asp-for="Achat.qte" class="form-control" />
+                <span asp-validation-for="Achat.qte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achat.mttAR" class="control-label"></label>
+                <input asp-for="Achat.mttAR" class="form-control" readonly />
+                <span asp-validation-for="Achat.mttAR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achat.mttJeton" class="control-label"></label>
+                <input asp-for="Achat.mttJeton" class="form-control" readonly />
+                <span asp-validation-for="Achat.mttJeton" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achat.dateAchat" class="control-label"></label>
+                <input asp-for="Achat.dateAchat" class="form-control" />
+                <span asp-validation-for="Achat.dateAchat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input style="float:right" type="submit" value="Modifier cet Achat" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

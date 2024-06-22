@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jR6OpgJRGFok2ieH1zP/vI1t90jkhv0MZDHsEZ92qXkkxYGZdc9NLUuN+nnma2QJL2pxAm5KRUWyspp6Y0rxUw==",
+  "dgSpecHash": "DGcdiN6e9MLC87RDACNa96lygyoItp4fmLD+1DEFbE50zuww1f/AmBNgbY6QYJEslI0qc2gv2WAjoTIjSCf6eg==",
   "success": true,
   "projectFilePath": "D:\\M2\\Mr Naina\\GestionJouet\\BO\\Back_Gestion\\Back_Gestion.csproj",
   "expectedPackageFiles": [
@@ -63,6 +63,8 @@
     "C:\\Users\\rakot\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.4\\microsoft.aspnetcore.components.quickgrid.8.0.4.nupkg.sha512",
     "C:\\Users\\rakot\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid.entityframeworkadapter\\8.0.4\\microsoft.aspnetcore.components.quickgrid.entityframeworkadapter.8.0.4.nupkg.sha512",
     "C:\\Users\\rakot\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.4\\microsoft.aspnetcore.components.web.8.0.4.nupkg.sha512",
+    "C:\\Users\\rakot\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\rakot\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\rakot\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.4\\microsoft.aspnetcore.metadata.8.0.4.nupkg.sha512",
     "C:\\Users\\rakot\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\rakot\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

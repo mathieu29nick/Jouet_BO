@@ -1,0 +1,78 @@
+﻿@page
+@model Back_Gestion.Pages.Achats.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 style="text-align:center" class="m-0 font-weight-bold text-primary">Fiche d'un Achat</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.produit)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.produit.libelle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.qte)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.qte)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.mttAR)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.mttAR)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.mttJeton)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.mttJeton)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.dateAchat)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.dateAchat)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.utilisateur)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.utilisateur.pseudo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.produit.image)
+            </dt>
+            <dd class="col-sm-10">
+                <img src="~/img/@Model.Achat.produit.image" alt="@Model.Achat.produit.libelle" style="max-width: 400px; max-height: 400px;" />
+            </dd>
+        </dl>
+        <p>
+            <div class="row">
+                <div class="col-md-9">
+                    <a asp-page="./Index" class="btn btn-light btn-icon-split">
+                        <span class="icon text-gray-600">
+                            <i class="fas fa-arrow-left"></i>
+                        </span>
+                        <span class="text">Retour</span>
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a asp-page="./Edit" asp-route-id="@Model.Achat.id" class="btn btn-warning btn-icon-split">
+                        <span class="icon text-gray-600">
+                            <i class="fas fa-edit"></i>
+                        </span>
+                        <span class="text">Modifier</span>
+                    </a>
+                </div>
+            </div>
+        </p>
+    </div>
+</div>

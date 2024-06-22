@@ -1,0 +1,63 @@
+﻿@page
+@model Back_Gestion.Pages.Achats.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h4 style="text-align:center" class="m-0 font-weight-bold text-primary">Suppression d'un Achat</h4>
+    </div>
+    <div class="card-body">
+        <p>Valider la suppression de cet Achat :</p>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.produit)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.produit.libelle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.qte)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.qte)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.mttAR)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.mttAR)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.mttJeton)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.mttJeton)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.dateAchat)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.dateAchat)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Achat.utilisateur)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Achat.utilisateur.pseudo)
+            </dd>
+        </dl>
+        <form method="post">
+            <a asp-page="./Index" class="btn btn-light btn-icon-split">
+                <span class="icon text-gray-600">
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+                <span class="text">Annuler</span>
+            </a>
+            <input type="hidden" asp-for="Achat.id" />
+            <input style="float:right" type="submit" value="Supprimer" class="btn btn-danger" />
+        </form>
+    </div>
+</div>
